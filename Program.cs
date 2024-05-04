@@ -1,11 +1,12 @@
 ﻿
 Console.WriteLine("Welcome to the bank of C#!");
 
-string pass = "EXO";
+string pass = "EXO"; // case sensitive password 
 string pp;
 int pin = 4980;
 int userEntry;
-userEntry = pin + 5;
+userEntry = pin + 5; // instead of initializing it as zero it's pin plus five that way it can never be the users pin if they choose it
+int pinLockout = 0;
 
 Console.WriteLine("Hey, what's the Password?");
 pp = Console.ReadLine();
@@ -25,21 +26,37 @@ try
 }
 catch
 {
-    Console.WriteLine("That's definitely not your pin because it's not a number, try again!!");
+    Console.WriteLine("That's definitely not your pin because it's not a number, try again!");
+
 }
 
 while (userEntry != pin)
 {
-    Console.WriteLine("Incorrect Pin, try again {tries remaining}");
-    try
+    if (pinLockout != 3)
     {
-        userEntry = int.Parse(Console.ReadLine());
+        Console.WriteLine("Incorrect Pin, try again {tries remaining}");
+        pinLockout++;
+        try
+        {
+            userEntry = int.Parse(Console.ReadLine());
+        }
+        catch
+        {
+            Console.WriteLine("Woah that can't be your pin, it's not a number! Try again!");
+            pinLockout++;
+
+        }
     }
-    catch
+    else
     {
-        Console.WriteLine("Woah that can't be your pin, it's not a number! Try again!");
+        Console.WriteLine("You are out of chances, good bye.");
+        break;
     }
+
 }
 
-Console.WriteLine("Pin accepted!");
+if (userEntry == pin)
+{
+    Console.WriteLine("Pin accepted!");
+}
 
