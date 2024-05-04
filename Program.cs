@@ -1,11 +1,23 @@
 ﻿
 Console.WriteLine("Welcome to the bank of C#!");
 
+string pass = "EXO";
+string pp;
 int pin = 4980;
 int userEntry;
 userEntry = pin + 5;
 
-Console.WriteLine("Please enter your Pin to proceed");
+Console.WriteLine("Hey, what's the Password?");
+pp = Console.ReadLine();
+
+while (pp != pass)
+{
+    Console.WriteLine("Wrong Password, try again.");
+    pp = Console.ReadLine();
+}
+
+Console.WriteLine("Good job, now...");
+Console.WriteLine("Please enter your Pin to proceed:");
 
 try
 {
