@@ -3,7 +3,7 @@
     static void Main(string[] args)
     {
 
-
+        // NEXT  an i forgot my password option and an overwrite the old passwords thing
         Console.WriteLine("Welcome to the bank of C#!");
 
         // string pass = "EXO"; // case sensitive password 
